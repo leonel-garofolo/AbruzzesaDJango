@@ -1,0 +1,38 @@
+{% extends 'adminplus/base.html' %}
+{% block title %}Balance{% endblock %}
+{% block branding %}<h1>Sistema de Gesti&oacute;n Bruzzesa</h1>{% endblock %}
+{% load staticfiles %}
+{% block content %}
+<link rel="stylesheet" type="text/css" href="{% static '/admin/css/forms.css'%}"/>
+<link rel="stylesheet" type="text/css" href="{% static '/admin/css/base.css'%}"/>
+<link rel="stylesheet" href="{% static '/admin/css/vendor/jquery/jquery-ui.min.css'%}">
+<script src="{% static '/admin/js/vendor/jquery/jquery.min.js'%}"></script>
+<script src="{% static '/admin/js/vendor/jquery/jquery-ui.min.js'%}"></script>
+<script src="{% static '/gestionAlumnos/js/informe_balance.js'%}"></script>
+<div id="content-main">
+    <form id="frmInforme" name="frmInforme" action="/admin/gestionAlumnos/generar_reporte" method="get" target="_blank">
+        <table>
+            <tr>
+                <th>Fecha Desde:</th><th><input type="text" class="datepicker" id="fechaDesde" name="fechaDesde"></th>
+                <th>Fecha Hasta:</th><th><input type="text" class="datepicker" id="fechaHasta" name="fechaHasta"></th>
+            </tr>
+            <tr>
+                <th>Concepto:</th><th><input type="text" id="cbxConcepto" name="cbxConcepto" class="custom-combobox-input ui-widget ui-widget-content ui-state-default ui-corner-left ui-autocomplete-input"></th>
+                <th>Movimiento:</th><th>
+                <select id='cbxMes' name="cbxMovimiento" >
+                    <option value=''></option>
+                    <option selected value='I'>Ingreso</option>
+                    <option value='E'>Egreso</option>
+                </select>
+                </th>
+            </tr>
+        </table>
+        <input type="hidden" id="id_concepto" name="id_concepto">
+        <input type="hidden" id="id_movimiento" name="id_movimiento">
+        <input type="hidden" name="report_name" value="balance">
+        <input type="button" value="Limpiar Filtros" onclick="javascript:limpiar();">
+        <input type="submit" value="Generar PDF" >
+        <p></p>
+    </form>
+</div>
+{% endblock %}

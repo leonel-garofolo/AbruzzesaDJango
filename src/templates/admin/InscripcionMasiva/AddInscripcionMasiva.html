@@ -1,0 +1,70 @@
+{% extends 'adminplus/base.html' %}
+{% block title %}Cantidad de Alumnos Inscriptos{% endblock %}
+{% block branding %}<h1>Sistema de Gesti&oacute;n Bruzzesa</h1>{% endblock %}
+{% load staticfiles %}
+{% block content %}
+<link rel="stylesheet" type="text/css" href="{% static '/admin/css/forms.css'%}"/>
+<link rel="stylesheet" type="text/css" href="{% static '/admin/css/base.css'%}"/>
+<link rel="stylesheet" href="{% static '/admin/css/vendor/jquery/jquery-ui.min.css'%}">
+<link rel="stylesheet" href="{% static '/admin/css/vendor/datatable/datatables.min.css'%}">
+<script src="{% static '/admin/js/vendor/jquery/jquery.min.js'%}"></script>
+<script src="{% static '/admin/js/vendor/jquery/jquery-ui.min.js'%}"></script>
+<script src="{% static '/admin/js/vendor/datatable/datatables.min.js'%}"></script>
+<script src="{% static '/gestionAlumnos/js/utils.js'%}"></script>
+<script src="{% static '/gestionAlumnos/js/inscripcion_masiva.js'%}"></script>
+
+<div id="content-main">
+    <form id="frmCuota" name="frmCuota">  
+	    <table border="0">
+	    	<tr>
+		    	<th>  
+			        <table border="0">
+			       		 <th>Taller Origen(A&#241;o Anterior):</th><th><input type="search" id="cbxPeriodoOrigen" name="cbxPeriodoOrigen" class="custom-combobox-input ui-widget ui-widget-content ui-state-default ui-corner-left ui-autocomplete-input" style="width: 400px"></th>			                    
+			        </table>
+		        </th>		        
+	        </tr>	 
+	        <tr>
+	        	<th>
+			        <table border="0">
+			       		 <th>Taller Destino(A&#241;o Actual):</th><th><input type="search" id="cbxPeriodoDestino" name="cbxCursoDestino" class="custom-combobox-input ui-widget ui-widget-content ui-state-default ui-corner-left ui-autocomplete-input" style="width: 400px"></th>			                    
+			        </table>
+		        </th>
+	        	<th>
+		        	<input id="btnCargar" type="button" value="Cargar" />
+		        </th>
+	        </tr>       
+	    </table>
+	    <table border="0">	    	
+	    	<tr>
+	    		<td>
+	    			<table id="tblDesde"  class="display" cellspacing="1">	    				
+				    	<tbody>					    	
+				    	</tbody>
+				    </table>
+	    		</td>
+	    		<td>	
+	    			<table>
+	    				<tr><td><input id="btnEnviarTodos" type="button" value="->>" title="Enviar Todos"/></td></tr>
+		    			<tr><td><input id="btnEnviarSeleccionado" type="button" value="->" title="Enviar Seleccionados"/></td></tr>
+		    			<tr><td><input id="btnBorrarSeleccionado" type="button" value="<-" title="Eliminar Seleccionado"/></td></tr>
+		    			<tr><td><input id="btnBorrarTodos" type="button" value="<<-" title="Eliminar Todos"/></td></tr>
+	    			</table>	    				    			
+	    		</td>
+	    		<td>
+	    			<table id="tblHasta" class="display" cellspacing="1">	    				
+				    	<tbody>					    	
+				    	</tbody>
+				    </table>
+	    		</td>
+	    	</tr>
+		    <tr>	    	
+	    	</tr>
+	    </table>
+	    <input type="hidden" id="id_periodo_origen" name="id_periodo_origen"/>      
+	    <input type="hidden" id="id_periodo_destino" name="id_periodo_destino"/>      	     
+	    <input id="btnLimpiar" type="button" value="Limpiar "/>                        
+        <input id="btnInscribirLista" type="button" value="Realizar Inscripciones"/><div id="msgPago"></div>        
+        <p></p>
+    </form>
+</div>
+{% endblock %}

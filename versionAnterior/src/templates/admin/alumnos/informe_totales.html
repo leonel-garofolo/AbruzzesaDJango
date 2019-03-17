@@ -1,0 +1,24 @@
+{% extends 'adminplus/base.html' %}
+{% block title %}Totales{% endblock %}
+{% block branding %}<h1>Sistema de Gesti&oacute;n Bruzzesa</h1>{% endblock %}
+{% load staticfiles %}
+{% block content %}
+<link rel="stylesheet" type="text/css" href="{% static '/admin/css/forms.css'%}"/>
+<link rel="stylesheet" type="text/css" href="{% static '/admin/css/base.css'%}"/>
+<link rel="stylesheet" href="{% static '/admin/css/vendor/jquery/jquery-ui.min.css'%}">
+<script src="{% static '/admin/js/vendor/jquery/jquery.min.js'%}"></script>
+<script src="{% static '/admin/js/vendor/jquery/jquery-ui.min.js'%}"></script>
+<script src="{% static '/gestionAlumnos/js/informe_totales.js'%}"></script>
+<div id="content-main">
+    <form id="frmInforme" name="frmInforme" action="/admin/gestionAlumnos/generar_reporte" method="get" target="_blank">
+        <table>
+            </tr>
+                <th>A&#241;o:</th><th><select id="cbxAnio" name="cbxAnio"></select></th>
+            </tr>
+        </table>
+        <input type="hidden" name="report_name" value="totales">
+        <input type="submit" value="Generar PDF" >
+        <p></p>
+    </form>
+</div>
+{% endblock %}

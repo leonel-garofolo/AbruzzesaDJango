@@ -1,0 +1,9 @@
+{% extends 'adminplus/base.html' %}
+{% block title %}Eliminar Alumnos{% endblock %}
+{% block branding %}<h1>Sistema de Gesti&oacute;n Bruzzesa</h1>{% endblock %}
+{% block content %}
+<form action="" method="post">{% csrf_token %}
+    <p>Are you sure you want to delete "{{ object }}"?</p>
+    <input type="submit" value="Confirmar" />
+</form>
+{% endblock %}

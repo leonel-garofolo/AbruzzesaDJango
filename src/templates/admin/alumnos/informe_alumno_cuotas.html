@@ -1,0 +1,49 @@
+{% extends 'adminplus/base.html' %}
+{% load admin_urls %}
+{% block title %}Lista de alumnos{% endblock %}
+{% block branding %}<h1>Sistema de Gesti&oacute;n Bruzzesa</h1>{% endblock %}
+{% load staticfiles %}
+{% block content %}
+<link rel="stylesheet" type="text/css" href="{% static '/admin/css/forms.css'%}"/>
+<link rel="stylesheet" type="text/css" href="{% static '/admin/css/base.css'%}"/>
+<link rel="stylesheet" href="{% static '/admin/css/vendor/jquery/jquery-ui.min.css'%}">
+<script src="{% static '/admin/js/vendor/jquery/jquery.min.js'%}"></script>
+<script src="{% static '/admin/js/vendor/jquery/jquery-ui.min.js'%}"></script>
+<script src="{% static '/gestionAlumnos/js/informe_alumno_cuotas.js'%}"></script>
+<div id="content-main">
+    <form id="frmInforme" name="frmInforme">
+        <table>
+            </tr>
+                <th>A&#241;o:</th><th><select id="cbxAnio" name="cbxAnio"></select></th>
+                <th>Mes:</th><th>
+                <select id='cbxMes' name="cbxMes" >
+                    <option value=''></option>
+                    <option selected value='1'>Enero</option>
+                    <option value='2'>Febrero</option>
+                    <option value='3'>Marzo</option>
+                    <option value='4'>Abril</option>
+                    <option value='5'>Mayo</option>
+                    <option value='6'>Junio</option>
+                    <option value='7'>Julio</option>
+                    <option value='8'>Agosto</option>
+                    <option value='9'>Septiembre</option>
+                    <option value='10'>Octubre</option>
+                    <option value='11'>Noviembre</option>
+                    <option value='12'>Diciembre</option>
+                </select>
+            </th>
+            </tr>
+            <tr>
+                <th>Alumno:</th><th><input type="search" id="cbxAlumno" name="cbxAlumno" class="custom-combobox-input ui-widget ui-widget-content ui-state-default ui-corner-left ui-autocomplete-input"></th>
+                <th>Taller:</th><th><input type="search" id="cbxPeriodo" name="cbxPeriodo" class="custom-combobox-input ui-widget ui-widget-content ui-state-default ui-corner-left ui-autocomplete-input" style="width: 400px"></th>             
+            </tr>
+        </table>
+        <input type="hidden" id="id_alumno" name="id_alumno">
+        <input type="hidden" id="id_periodo_curso" name="id_periodo_curso">  
+        <input type="hidden" name="report_name" value="alumnosCuotas">
+        <input type="button" value="Limpiar Filtros" onclick="javascript:limpiar();">
+        <input type="button" value="Generar PDF" onclick="javascript:generarPdf();">        
+        <p></p>
+    </form>
+</div>
+{% endblock %}

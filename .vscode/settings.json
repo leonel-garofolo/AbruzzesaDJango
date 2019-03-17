@@ -1,0 +1,14 @@
+{
+    "python.pythonPath": "C:\\Python36\\python.exe",
+    "git.ignoreLimitWarning": true,
+    "files.watcherExclude": {
+        "**/Include": true,
+        "**/Scripts": true,
+        "**/Lib": true,
+    },
+    "files.exclude": {
+        "**/Include": true,
+        "**/Lib": true,
+        "**/Scripts": true
+    }
+}

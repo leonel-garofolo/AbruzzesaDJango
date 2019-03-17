@@ -1,0 +1,6 @@
+django
+mysqlclient
+reportlab
+django_ajax_selects
+django_adminplus
+

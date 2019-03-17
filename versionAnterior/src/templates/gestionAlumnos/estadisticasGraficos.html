@@ -1,0 +1,63 @@
+{% extends 'adminplus/base.html' %}
+{% block title %}Cantidad de Alumnos Inscriptos{% endblock %}
+{% block branding %}<h1>Sistema de Gesti&oacute;n Bruzzesa</h1>{% endblock %}
+{% load staticfiles %}
+{% block content %}
+<link rel="stylesheet" type="text/css" href="{% static '/admin/css/forms.css'%}"/>
+<link rel="stylesheet" type="text/css" href="{% static '/admin/css/base.css'%}"/>
+<link rel="stylesheet" href="{% static '/admin/css/vendor/jquery/jquery-ui.min.css'%}">
+<script src="{% static '/admin/js/vendor/jquery/jquery.min.js'%}"></script>
+<script src="{% static '/admin/js/vendor/jquery/jquery-ui.min.js'%}"></script>
+
+ <!-- PivotTable.js libs from ../dist -->
+ <link rel="stylesheet" type="text/css" href="{% static '/pivottable/dist/pivot.css'%}">
+ <script type="text/javascript" src="{% static '/pivottable/dist/pivot.js'%}"></script>
+ <style>
+     body {font-family: Verdana;}
+ </style>
+
+ <!-- optional: mobile support with jqueryui-touch-punch -->
+ <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui-touch-punch/0.2.3/jquery.ui.touch-punch.min.js"></script> 
+<script>
+	$(document).ready(function() {
+		var sum = $.pivotUtilities.aggregatorTemplates.sum;
+		var numberFormat = $.pivotUtilities.numberFormat;
+		var intFormat = numberFormat({digitsAfterDecimal: 0});
+		var data = null;
+		$.ajax({
+			type : "POST",
+			url : '/admin/function/get_meses_cuotas',
+			data : {
+				id_inscripcion : $("#id_inscripcion").val()
+			},
+			success : function(json) {	
+				console.log(json)
+				$.each(json, function(i, value) {				
+					var options = '';
+					for (var i = 0; i < value.length; i++) {				
+						options += '<option value="' + value[i][0] + '">'
+								+ value[i][1] + '</option>';					
+					}
+					$("select#cbxCuota").html(options);
+		        });
+			}
+		});
+		
+		$("#output").pivot(
+		    [
+		        {color: "blue", shape: "circle", value: 1},
+		        {color: "red", shape: "triangle", value: 55},
+		        {color: "blue", shape: "circle", value: 3},
+		        {color: "red", shape: "triangle", value: 4}
+		    ],
+		    {
+		        rows: ["color"],
+		        cols: ["shape"],
+		        aggregator: sum(intFormat)(["value"])
+		    }
+		);
+	});			
+</script>
+ 	<p><a href="index.html">&laquo; back to PivotTable.js examples</a></p>
+    <div id="output" style="margin: 30px;">leonel</div>
+{% endblock %}

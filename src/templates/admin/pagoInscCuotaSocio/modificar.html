@@ -1,0 +1,36 @@
+{% extends 'adminplus/base.html' %}
+{% block title %}Cantidad de Alumnos Inscriptos{% endblock %}
+{% block branding %}<h1>Sistema de Gesti&oacute;n Bruzzesa</h1>{% endblock %}
+{% load staticfiles %}
+{% block content %}
+<link rel="stylesheet" type="text/css" href="{% static '/admin/css/forms.css'%}"/>
+<link rel="stylesheet" type="text/css" href="{% static '/admin/css/base.css'%}"/>
+<link rel="stylesheet" href="{% static '/admin/css/vendor/jquery/jquery-ui.min.css'%}">
+<script src="{% static '/admin/js/vendor/jquery/jquery.min.js'%}"></script>
+<script src="{% static '/admin/js/vendor/jquery/jquery-ui.min.js'%}"></script>
+<script src="{% static '/gestionAlumnos/js/utils.js'%}"></script>
+<script src="{% static '/gestionAlumnos/js/modificar_pago_cuota_socio.js'%}"></script>
+<div id="content-main">
+    <form id="frmCuota" name="frmCuota">    
+        <table>
+        	<th>Inscripcion:</th><th><input type="search" id="cbxInscripcion" name="cbxInscripcion" size="50" class="custom-combobox-input ui-widget ui-widget-content ui-state-default ui-corner-left ui-autocomplete-input"></th>
+            <tr>
+                <th>Cuota Pagadas:</th><th>
+	                <select id='cbxCuota' name="cbxCuota" >
+	                    <option value=''></option>                  
+	                </select>
+            	</th>
+            </tr>
+            <tr>
+                <th>Importe:</th><th><input type="number" id="txtImporte" name="txtImporte"></th>
+            </tr>
+        </table>
+        <input type="hidden" id="id_inscripcion" name="id_inscripcion">               
+        <input id="btnUpdate" type="button" value="Modificar Pago">
+        <input id="btnDelete" type="button" value="Eliminar Pago"><div id="msgPago"></div>
+        <input id="btnImprimir" type="button" value="Imprimir Ticket"><div id="msgPago"></div>
+         <iframe id="pdf-iframe" style="display: none;">
+        <p></p>
+    </form>
+</div>
+{% endblock %}
