@@ -302,12 +302,12 @@ def delete_socio_cuota(request):
 
 @csrf_exempt  # POST security
 def get_importe_inscripcion(request):
-    if request.POST['id_alumno'] != '':
+    if request.POST['id_inscripcion'] != '':
         sql = ""
         sql += " select pc.importe " 
         sql += " from inscripcion i " 
         sql += " inner join periodo_curso pc on pc.id_periodo_curso = i.id_periodo_curso "
-        sql += " where i.id_inscripcion = " + request.POST['id_alumno']
+        sql += " where i.id_inscripcion = " + request.POST['id_inscripcion']
         print(sql) 
         cursor = connection.cursor()
         cursor.execute(sql) 
@@ -315,6 +315,21 @@ def get_importe_inscripcion(request):
         cursor.close()
     else:
         return JsonResponse()
+    # for row in rows    
+    return JsonResponse(dict(genres=list(rows)))
+
+@csrf_exempt  # POST security
+def get_importe_socio(request):   
+    sql = ""
+    sql += " select (case when c.importe_socio is null then 0 else c.importe_socio end) as importe " 
+    sql += " from configuracion c " 
+    sql += " limit 1"
+    print(sql) 
+    cursor = connection.cursor()
+    cursor.execute(sql) 
+    rows = cursor.fetchall()   
+    cursor.close()
+   
     # for row in rows    
     return JsonResponse(dict(genres=list(rows)))
 

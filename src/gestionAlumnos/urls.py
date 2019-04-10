@@ -50,7 +50,9 @@ urlpatterns = [
     url(r'^admin/function/delete_socio_cuota$', views.delete_socio_cuota, name='delete_socio_cuota'),
     
     url(r'^admin/function/get_importe_inscripcion$', views.get_importe_inscripcion, name='get_importe_inscripcion'),
+    
     url(r'^admin/function/get_importe_inscripcion_pagado$', views.get_importe_inscripcion_pagado, name='get_importe_inscripcion_pagado'), 
-     url(r'^admin/function/get_importe_socio_pagado$', views.get_importe_socio_pagado, name='get_importe_socio_pagado'),    
-     url(r'^admin/function/comprobante$', reports.comprobante_caja, name='comprobante'),
+    url(r'^admin/function/get_importe_socio_pagado$', views.get_importe_socio_pagado, name='get_importe_socio_pagado'),    
+    url(r'^admin/function/comprobante$', reports.comprobante_caja, name='comprobante'),
+    url(r'^admin/function/get_importe_socio$', views.get_importe_socio, name='get_importe_socio'),
 ]

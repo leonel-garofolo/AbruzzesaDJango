@@ -126,6 +126,7 @@ class Configuracion(models.Model):
     id_configuracion = models.AutoField(primary_key=True)
     id_concepto_pago_asoc = models.CharField(max_length=255, blank=True, null=True)
     id_concepto_pago_insc = models.CharField(max_length=255, blank=True, null=True)
+    importe_socio = models.DecimalField(max_digits=9, decimal_places=2)
     
     def __str__(self):        
         return self.id_concepto_pago_asoc + '-' + self.id_concepto_pago_insc

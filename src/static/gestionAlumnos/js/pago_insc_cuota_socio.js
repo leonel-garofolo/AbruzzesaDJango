@@ -50,10 +50,8 @@ function getCuotas() {
 	
 	$.ajax({
 		type : "POST",
-		url : '/admin/function/get_importe_inscripcion',
-		data : {
-			id_alumno : $("#id_inscripcion").val()
-		},
+		url : '/admin/function/get_importe_socio',
+		data : {},
 		success : function(json) {
 			$.each(json, function(i, value) {				
 				var options = '';
