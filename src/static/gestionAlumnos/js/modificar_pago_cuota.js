@@ -129,7 +129,7 @@ function imprimir(){
 }
 
 function printTicket(){	
-	$('#pdf-iframe').attr("src", '/admin/function/ticket_socio?id_pago_insc_cuota_soc=' + $('#cbxCuota').val()).load(function(){
+	$('#pdf-iframe').attr("src", '/admin/function/ticket?id_pago_insc_cuota=' + $('#cbxCuota').val()).load(function(){
 	    document.getElementById('pdf-iframe').contentWindow.print();
 	});	
 }

@@ -42,7 +42,7 @@ urlpatterns = [
     url(r'^admin/function/save_insc_cuota$', views.save_insc_cuota, name='save_insc_cuota'),
     url(r'^admin/function/save_insc_cuota_socio$', views.save_insc_cuota_socio, name='save_insc_cuota_socio'),
     url(r'^admin/function/ticket$', reports.ticket, name='ticket'),
-    url(r'^admin/function/ticketsocio$', reports.ticket_socio, name='ticketsocio'),
+    url(r'^admin/function/ticket_socio$', reports.ticket_socio, name='ticketsocio'),
     url(r'^admin/function/update_insc_cuota$', views.update_insc_cuota, name='update_insc_cuota'),
     url(r'^admin/function/delete_insc_cuota$', views.delete_insc_cuota, name='delete_insc_cuota'),
 

@@ -89,7 +89,7 @@ function save(){
 }
 
 function printTicket(){	
-	$('#pdf-iframe').attr("src", '/admin/function/ticketsocio?id_pago_insc_cuota_soc=' + $('#id_pago_insc_cuota').val()).load(function(){
+	$('#pdf-iframe').attr("src", '/admin/function/ticket_socio?id_pago_insc_cuota_soc=' + $('#id_pago_insc_cuota').val()).load(function(){
 	    document.getElementById('pdf-iframe').contentWindow.print();
 	});
 	
